@@ -1,0 +1,8 @@
+# Ignora arquivos soltos na raiz (rascunhos, vídeos, imagens brutas e backup antigo)
+/*
+
+# Mantém apenas os arquivos do portal em produção
+!.gitignore
+!index.html
+!assets/
+assets/img/*.webp

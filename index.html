@@ -1,0 +1,3960 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prefeitura Municipal de Borba - AM | Portal Oficial</title>
+  <meta name="description"
+    content="Portal Oficial da Prefeitura Municipal de Borba - AM. Serviços ao cidadão, transparência, notícias, história, turismo e secretarias municipais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       1. TOKENS DE DESIGN
+       ========================================================================== */
+    :root {
+      --forest-deep: #071F18;
+      --forest: #0B3D2E;
+      --forest-light: #0F5D3F;
+      --gold: #C89A2D;
+      --gold-dark: #7A5A12;
+      --cream: #F9F6F0;
+      --warn-bg: #FFF8E1;
+      --emerald: #059669;
+      --white: #FFFFFF;
+      --container: 1320px;
+      --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system,
+        BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE
+       ========================================================================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      border: 0 solid #e5e7eb;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    * {
+      scrollbar-width: thin;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: var(--font-sans);
+      background-color: var(--cream);
+      color: inherit;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    ul,
+    figure,
+    address {
+      margin: 0;
+    }
+
+    address {
+      font-style: normal;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background: transparent;
+      cursor: pointer;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .icon {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .icon--fill {
+      fill: currentColor;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      background-color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    .page-shell.is-high-contrast {
+      filter: contrast(1.25);
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* ==========================================================================
+       3. BARRA SUPERIOR (ACESSIBILIDADE E CONTATO RÁPIDO)
+       ========================================================================== */
+    .topbar {
+      background-color: var(--forest-deep);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.6875rem;
+      line-height: 1.25;
+      letter-spacing: 0.025em;
+    }
+
+    .topbar__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.375rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .topbar__info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .topbar__item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .topbar__icon {
+      color: var(--gold);
+    }
+
+    .topbar__sep {
+      display: none;
+      opacity: 0.3;
+    }
+
+    .topbar__right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .topbar__a11y {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .topbar__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.15s ease;
+    }
+
+    .topbar__btn--contrast {
+      margin-left: 0.5rem;
+    }
+
+    .topbar__btn:hover {
+      color: var(--white);
+    }
+
+    .topbar__links {
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0.8;
+    }
+
+    .topbar__divider {
+      width: 1px;
+      height: 0.75rem;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .topbar__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.15s ease;
+    }
+
+    .topbar__link:hover {
+      color: var(--white);
+    }
+
+    .topbar__link--gold {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    @media (min-width: 768px) {
+      .topbar {
+        font-size: 0.75rem;
+      }
+
+      .topbar__inner {
+        height: 2.25rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .topbar__sep {
+        display: inline;
+      }
+
+      .topbar__right {
+        gap: 1rem;
+      }
+
+      .topbar__links {
+        display: flex;
+      }
+    }
+
+    /* ==========================================================================
+       4. CABEÇALHO E NAVEGAÇÃO
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: var(--white);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(24px);
+    }
+
+    .header__bar {
+      height: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .brand__emblem {
+      width: 2.75rem;
+      height: 2.75rem;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand__text {
+      line-height: 1.05;
+    }
+
+    .brand__title {
+      display: block;
+      font-weight: 800;
+      font-size: 0.8125rem;
+      letter-spacing: -0.02em;
+      color: var(--forest);
+    }
+
+    .brand__subtitle {
+      display: block;
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--forest-light);
+      text-transform: uppercase;
+    }
+
+    .desktop-nav {
+      display: none;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.84375rem;
+      font-weight: 600;
+      color: rgba(11, 61, 46, 0.8);
+    }
+
+    .desktop-nav__btn {
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color 0.15s ease;
+    }
+
+    .desktop-nav__btn:hover,
+    .desktop-nav__btn.is-active {
+      color: var(--forest);
+    }
+
+    .desktop-nav__btn.is-active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 100%;
+      height: 2px;
+      background-color: var(--gold);
+    }
+
+    .desktop-nav__btn--muted {
+      color: rgba(11, 61, 46, 0.7);
+    }
+
+    .desktop-nav__btn--muted:hover {
+      color: var(--forest);
+    }
+
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s ease;
+    }
+
+    .icon-btn--search {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: var(--forest);
+    }
+
+    .icon-btn--search:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .icon-btn--menu {
+      background-color: var(--cream);
+      color: var(--forest);
+    }
+
+    .portal-btn {
+      display: none;
+      height: 2.5rem;
+      padding: 0 1.25rem;
+      border-radius: 9999px;
+      background-color: var(--forest);
+      color: var(--white);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.15s ease;
+    }
+
+    .portal-btn:hover {
+      background-color: var(--forest-light);
+    }
+
+    .search-drawer {
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: var(--cream);
+      padding: 0.75rem 0;
+    }
+
+    .search-drawer__inner {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .search-drawer__field {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--white);
+      border-radius: 9999px;
+      padding: 0 1rem;
+      height: 2.75rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .search-drawer__field .icon {
+      opacity: 0.4;
+    }
+
+    .search-drawer__input {
+      flex: 1;
+      outline: none;
+      font-size: 0.875rem;
+      background: transparent;
+      min-width: 0;
+    }
+
+    .search-drawer__submit {
+      height: 2.75rem;
+      padding: 0 1rem;
+      border-radius: 9999px;
+      background-color: var(--forest);
+      color: var(--white);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .mobile-menu {
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: var(--white);
+      padding: 1rem 0;
+    }
+
+    .mobile-menu__grid {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .mobile-menu__link {
+      text-align: left;
+      height: 2.75rem;
+      padding: 0 0.75rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      color: var(--forest);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.15s ease;
+    }
+
+    .mobile-menu__link:hover {
+      background-color: var(--cream);
+    }
+
+    .mobile-menu__link .icon {
+      opacity: 0.3;
+    }
+
+    .mobile-menu__cta {
+      margin-top: 0.5rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      background-color: var(--forest);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 700;
+    }
+
+    @media (min-width: 768px) {
+      .header__bar {
+        height: 5rem;
+      }
+
+      .brand__emblem {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      .brand__title {
+        font-size: 0.875rem;
+      }
+
+      .brand__subtitle {
+        font-size: 0.6875rem;
+      }
+
+      .portal-btn {
+        display: inline-flex;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .desktop-nav {
+        display: flex;
+      }
+
+      .icon-btn--menu,
+      .mobile-menu {
+        display: none !important;
+      }
+    }
+
+    /* ==========================================================================
+       5. HERO PRINCIPAL (#inicio)
+       ========================================================================== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--forest);
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero__bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image: linear-gradient(to right,
+          #071F18,
+          rgba(11, 61, 46, 0.85),
+          rgba(11, 61, 46, 0.2));
+    }
+
+    .hero__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image: linear-gradient(to top,
+          rgba(7, 31, 24, 0.9),
+          transparent,
+          transparent);
+    }
+
+    .hero__bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero__grid {
+      position: relative;
+      z-index: 1;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+      display: grid;
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .hero__content {
+      color: var(--white);
+      padding-top: 0.5rem;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .hero__pulse {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 9999px;
+      background-color: var(--gold);
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .hero__title {
+      font-size: 1.875rem;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      max-width: 720px;
+    }
+
+    .hero__title-accent {
+      color: var(--gold);
+    }
+
+    .hero__lead {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      line-height: 1.625;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 560px;
+    }
+
+    .hero__actions {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-gold {
+      height: 3rem;
+      padding: 0 1.5rem;
+      border-radius: 9999px;
+      background-color: var(--gold);
+      color: var(--forest-deep);
+      font-weight: 800;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 8px 24px rgba(200, 154, 45, 0.35);
+      transition: filter 0.15s ease;
+    }
+
+    .btn-gold:hover {
+      filter: brightness(1.1);
+    }
+
+    .btn-glass {
+      height: 3rem;
+      padding: 0 1.5rem;
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-glass:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .hero__stats {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      max-width: 640px;
+    }
+
+    .hero-stat {
+      border-radius: 1rem;
+      background-color: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      padding: 0.75rem 1rem;
+    }
+
+    .hero-stat__value {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-stat__label {
+      display: block;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+      font-weight: 700;
+    }
+
+    .hero__aside {
+      width: 100%;
+    }
+
+    .festejo-card {
+      border-radius: 24px;
+      background-color: var(--white);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .festejo-card__media {
+      position: relative;
+      height: 220px;
+    }
+
+    .festejo-card__media::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 6rem;
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    }
+
+    .festejo-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .festejo-card__tag {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background-color: var(--forest);
+      color: var(--white);
+      font-size: 0.625rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 0.375rem 0.75rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .festejo-card__tag .icon {
+      color: var(--gold);
+    }
+
+    .festejo-card__fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 6rem;
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    }
+
+    .festejo-card__caption {
+      z-index: 1;
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      right: 0.75rem;
+      color: var(--white);
+    }
+
+    .festejo-card__dates {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+    }
+
+    .festejo-card__title {
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .festejo-card__body {
+      padding: 1.25rem;
+    }
+
+    .festejo-card__intro {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .festejo-card__icon-wrap {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background-color: var(--cream);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--forest);
+    }
+
+    .festejo-card__desc-col {
+      flex: 1;
+    }
+
+    .festejo-card__desc {
+      font-size: 0.8125rem;
+      line-height: 1.3;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    .festejo-card__law {
+      margin-top: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(11, 61, 46, 0.7);
+      background-color: var(--cream);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+    }
+
+    .festejo-card__law-dot {
+      width: 0.375rem;
+      height: 0.375rem;
+      border-radius: 9999px;
+      background-color: var(--emerald);
+    }
+
+    .festejo-card__metrics {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      font-size: 0.6875rem;
+    }
+
+    .festejo-metric {
+      border-radius: 0.75rem;
+      background-color: var(--cream);
+      padding: 0.75rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .festejo-metric--highlight {
+      background-color: rgba(200, 154, 45, 0.15);
+      border-color: rgba(200, 154, 45, 0.2);
+    }
+
+    .festejo-metric__num {
+      display: block;
+      font-weight: 800;
+      color: var(--forest);
+    }
+
+    .festejo-metric__sub {
+      display: block;
+      opacity: 0.6;
+      font-weight: 500;
+    }
+
+    .festejo-metric--highlight .festejo-metric__sub {
+      opacity: 0.7;
+    }
+
+    .festejo-card__cta {
+      margin-top: 1rem;
+      width: 100%;
+      height: 2.75rem;
+      border-radius: 9999px;
+      background-color: var(--forest);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.8125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: background-color 0.15s ease;
+    }
+
+    .festejo-card__cta:hover {
+      background-color: var(--forest-light);
+    }
+
+    .festejo-followers {
+      margin-top: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.6875rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .avatar-stack {
+      display: flex;
+    }
+
+    .avatar-stack__dot {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 9999px;
+      border: 2px solid var(--forest);
+    }
+
+    .avatar-stack__dot+.avatar-stack__dot {
+      margin-left: -0.5rem;
+    }
+
+    .avatar-stack__dot--gold {
+      background-color: var(--gold);
+    }
+
+    .avatar-stack__dot--white {
+      background-color: var(--white);
+    }
+
+    .avatar-stack__dot--green {
+      background-color: var(--forest-light);
+    }
+
+    @media (min-width: 768px) {
+      .hero__grid {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        align-items: center;
+      }
+
+      .hero__content {
+        padding-top: 0;
+      }
+
+      .hero__title {
+        font-size: 3.375rem;
+      }
+
+      .hero__lead {
+        margin-top: 1.5rem;
+        font-size: 1.0625rem;
+      }
+
+      .hero__actions {
+        margin-top: 2rem;
+      }
+
+      .hero__stats {
+        margin-top: 2.5rem;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .festejo-card__media {
+        height: 260px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero__grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+
+      .hero__aside {
+        justify-self: end;
+      }
+
+      .festejo-followers {
+        justify-content: flex-start;
+      }
+    }
+
+    /* ==========================================================================
+       6. SERVIÇOS EM 1 CLIQUE (#servicos)
+       ========================================================================== */
+    .services-section {
+      background-color: var(--cream);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .services-section__inner {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .section-header-split {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--forest-light);
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+    }
+
+    .section-title {
+      margin-top: 0.75rem;
+      font-size: 1.625rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .section-subtitle {
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      color: rgba(0, 0, 0, 0.6);
+      max-width: 520px;
+    }
+
+    .services-note {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(11, 61, 46, 0.6);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .service-card {
+      text-align: left;
+      border-radius: 18px;
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+      transition: all 0.15s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(11, 61, 46, 0.2);
+      box-shadow: 0 12px 32px rgba(11, 61, 46, 0.08);
+    }
+
+    .service-card__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background-color: var(--cream);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--forest);
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .service-card:hover .service-card__icon {
+      background-color: var(--forest);
+      color: var(--white);
+    }
+
+    .service-card__title {
+      display: block;
+      margin-top: 0.75rem;
+      font-weight: 800;
+      font-size: 0.8125rem;
+      color: var(--forest);
+      line-height: 1.25;
+    }
+
+    .service-card__desc {
+      display: block;
+      font-size: 0.6875rem;
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 500;
+      line-height: 1.25;
+      margin-top: 0.25rem;
+    }
+
+    .service-card__arrow {
+      margin-top: 0.75rem;
+      display: inline-flex;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 9999px;
+      background-color: rgba(0, 0, 0, 0.05);
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s ease;
+    }
+
+    .service-card:hover .service-card__arrow {
+      background-color: var(--gold);
+    }
+
+    @media (min-width: 768px) {
+      .services-section__inner {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+      }
+
+      .section-header-split {
+        flex-direction: row;
+        align-items: flex-end;
+      }
+
+      .section-title {
+        font-size: 2.125rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.875rem;
+      }
+
+      .services-note {
+        display: flex;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+      }
+    }
+
+    /* ==========================================================================
+       7. NOTÍCIAS DE BORBA (#noticias)
+       ========================================================================== */
+    .news-section {
+      background-color: var(--white);
+    }
+
+    .section-pad {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .news-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .news-header__title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .news-header__sub {
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-outline-pill {
+      display: none;
+      height: 2.5rem;
+      padding: 0 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      align-items: center;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-outline-pill:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-outline-pill .icon {
+      margin-left: 0.5rem;
+    }
+
+    .news-layout {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .news-featured {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: var(--white);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .news-featured__media {
+      position: relative;
+      height: 260px;
+      background-color: var(--forest);
+      overflow: hidden;
+    }
+
+    .news-featured__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-featured__badges {
+      position: absolute;
+      z-index: 1;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .badge-forest {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      background-color: var(--forest);
+      color: var(--white);
+      font-size: 0.625rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    .badge-blur {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      font-size: 0.625rem;
+      font-weight: 700;
+    }
+
+    .news-featured__body {
+      padding: 1.5rem;
+    }
+
+    .news-featured__title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--forest);
+    }
+
+    .news-featured__excerpt {
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      line-height: 1.625;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .news-featured__btn {
+      margin-top: 1rem;
+      height: 2.5rem;
+      padding: 0 1rem;
+      border-radius: 9999px;
+      background-color: var(--forest);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .news-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .news-mini {
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: var(--cream);
+      padding: 1rem;
+      transition: box-shadow 0.15s ease;
+    }
+
+    .news-mini:hover {
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .news-mini__media {
+      height: 175px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: var(--forest);
+      margin-bottom: 0.75rem;
+    }
+
+    .news-mini__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-mini__tag {
+      padding: 0.25rem 0.625rem;
+      border-radius: 9999px;
+      background-color: var(--white);
+      font-size: 0.625rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .news-mini__meta {
+      margin-top: 0.75rem;
+    }
+
+    .news-mini__date {
+      display: block;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(0, 0, 0, 0.4);
+    }
+
+    .news-mini__title {
+      margin-top: 0.25rem;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      line-height: 1.25;
+      color: var(--forest);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    .news-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .notice-box {
+      border-radius: 20px;
+      background-color: var(--warn-bg);
+      border: 1px solid rgba(200, 154, 45, 0.25);
+      padding: 1rem;
+    }
+
+    .notice-box__head {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-dark);
+    }
+
+    .notice-box__list {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .notice-item {
+      border-radius: 0.75rem;
+      background-color: var(--white);
+      padding: 0.75rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      font-size: 0.75rem;
+      line-height: 1.375;
+    }
+
+    .notice-item strong {
+      color: var(--forest);
+    }
+
+    .sidebar-card {
+      border-radius: 20px;
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+    }
+
+    .sidebar-card__head {
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--forest);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .calendar-list {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .calendar-row {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .calendar-row__date {
+      font-weight: 800;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .social-box {
+      border-radius: 20px;
+      background-color: var(--forest);
+      color: var(--white);
+      padding: 1.25rem;
+    }
+
+    .social-box__eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+    }
+
+    .social-box__title {
+      margin-top: 0.5rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .social-box__pill {
+      margin-top: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      background-color: var(--white);
+      color: var(--forest);
+      padding: 0 1rem;
+      height: 2.25rem;
+      border-radius: 9999px;
+    }
+
+    .social-box__caption {
+      margin-top: 0.75rem;
+      font-size: 0.6875rem;
+      opacity: 0.7;
+      line-height: 1.375;
+    }
+
+    .latest-news__title {
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--forest);
+    }
+
+    .latest-news__meta {
+      margin-top: 0.25rem;
+      font-size: 0.6875rem;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 640px) {
+      .news-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 768px) {
+      .section-pad {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+
+      .news-header__title {
+        font-size: 2.25rem;
+      }
+
+      .btn-outline-pill {
+        display: inline-flex;
+      }
+
+      .news-featured__media {
+        height: 320px;
+      }
+
+      .news-featured__title {
+        font-size: 1.375rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .news-layout {
+        grid-template-columns: 1.2fr 1fr 0.7fr;
+      }
+    }
+
+    /* ==========================================================================
+       8. A CIDADE E HISTÓRIA (#cidade)
+       ========================================================================== */
+    .city-section {
+      background-color: var(--forest);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .city-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .city-section__grid {
+      position: relative;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .city-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    .city-badge .icon {
+      color: var(--gold);
+    }
+
+    .city-title {
+      margin-top: 1rem;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+
+    .city-prose {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .city-prose strong {
+      color: var(--white);
+    }
+
+    .city-tags {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .city-tag-gold {
+      border-radius: 9999px;
+      background-color: var(--gold);
+      color: var(--forest-deep);
+      padding: 0 1rem;
+      height: 2.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .city-tag-ghost {
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0 1rem;
+      height: 2.25rem;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .city-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      align-content: start;
+    }
+
+    .city-fact-card {
+      border-radius: 18px;
+      background-color: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      padding: 1rem;
+    }
+
+    .city-fact-card__label {
+      display: block;
+      font-size: 0.625rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      opacity: 0.6;
+    }
+
+    .city-fact-card__value {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .city-fact-card__sub {
+      display: block;
+      font-size: 0.6875rem;
+      opacity: 0.6;
+    }
+
+    .city-river-banner {
+      grid-column: span 2 / span 2;
+      border-radius: 18px;
+      background-color: var(--gold);
+      color: var(--forest-deep);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .city-river-banner__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background-color: var(--forest-deep);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .city-river-banner__text {
+      font-size: 0.75rem;
+      line-height: 1.25;
+    }
+
+    @media (min-width: 768px) {
+      .city-section__grid {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+
+      .city-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .city-section__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* ==========================================================================
+       9. TURISMO & CULTURA (#turismo)
+       ========================================================================== */
+    .tourism-section {
+      background-color: var(--cream);
+    }
+
+    .tourism-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .tourism-header__title {
+      margin-top: 0.75rem;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .tourism-header__sub {
+      font-size: 0.8125rem;
+      color: rgba(0, 0, 0, 0.6);
+      max-width: 420px;
+    }
+
+    .tourism-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .tourism-card {
+      border-radius: 24px;
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.15s ease;
+    }
+
+    .tourism-card:hover {
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .tourism-card__media {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .tourism-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .tourism-card:hover .tourism-card__img {
+      transform: scale(1.02);
+    }
+
+    .tourism-card__tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.625rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--forest);
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .tourism-card__body {
+      padding: 1.5rem;
+    }
+
+    .tourism-card__title {
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--forest);
+      line-height: 1.25;
+    }
+
+    .tourism-card__desc {
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      line-height: 1.625;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .tourism-card__meta {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 9999px;
+      background-color: var(--cream);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 0.375rem 0.75rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    @media (min-width: 768px) {
+      .tourism-header__title {
+        font-size: 2.25rem;
+      }
+
+      .tourism-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* ==========================================================================
+       10. GOVERNO E SECRETARIAS (#governo / #secretarias)
+       ========================================================================== */
+    .gov-section {
+      background-color: var(--white);
+    }
+
+    .gov-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .gov-header__title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .gov-header__sub {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .gov-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 9999px;
+      background-color: var(--cream);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 0 1rem;
+      height: 2.25rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .secretariat-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .secretariat-card {
+      border-radius: 18px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: var(--cream);
+      padding: 1rem;
+      transition: all 0.15s ease;
+    }
+
+    .secretariat-card:hover {
+      background-color: var(--white);
+      border-color: rgba(11, 61, 46, 0.15);
+      box-shadow: 0 12px 32px rgba(11, 61, 46, 0.08);
+    }
+
+    .secretariat-card__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .secretariat-card__avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background-color: var(--forest);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.75rem;
+    }
+
+    .secretariat-card__pill {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 9999px;
+      padding: 0.25rem 0.625rem;
+    }
+
+    .secretariat-card__name {
+      margin-top: 0.75rem;
+      font-weight: 800;
+      font-size: 0.8125rem;
+      line-height: 1.25;
+      color: var(--forest);
+      min-height: 36px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .secretariat-card__sec {
+      margin-top: 0.5rem;
+      font-size: 0.6875rem;
+      color: rgba(0, 0, 0, 0.6);
+      line-height: 1.375;
+    }
+
+    .secretariat-card__label {
+      opacity: 0.5;
+      font-weight: 600;
+    }
+
+    .secretariat-card__person {
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    @media (min-width: 640px) {
+      .secretariat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 768px) {
+      .gov-header__title {
+        font-size: 2.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .secretariat-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    /* ==========================================================================
+       11. TRANSPARÊNCIA E ACESSO À INFORMAÇÃO (#transparencia)
+       ========================================================================== */
+    .lai-band {
+      background-color: var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lai-band__inner {
+      position: relative;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .lai-band__lead {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lai-band__icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      background-color: var(--forest-deep);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .lai-band__eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: rgba(7, 31, 24, 0.7);
+    }
+
+    .lai-band__title {
+      font-size: 1.375rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--forest-deep);
+      line-height: 1;
+    }
+
+    .lai-band__sub {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(7, 31, 24, 0.7);
+      margin-top: 0.25rem;
+    }
+
+    .lai-band__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .lai-btn {
+      height: 2.75rem;
+      padding: 0 1.25rem;
+      border-radius: 9999px;
+      background-color: var(--forest-deep);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.15s ease;
+    }
+
+    .lai-btn:hover {
+      background-color: #000000;
+    }
+
+    @media (min-width: 768px) {
+      .lai-band__inner {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+
+      .lai-band__title {
+        font-size: 1.625rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lai-band__inner {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    /* ==========================================================================
+       12. RODAPÉ (#contato)
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--forest-deep);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer__main {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer__brand-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .footer__brand-text {
+      line-height: 1.25;
+    }
+
+    .footer__brand-title {
+      font-weight: 800;
+      color: var(--white);
+      font-size: 0.8125rem;
+    }
+
+    .footer__brand-sub {
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+      opacity: 0.6;
+    }
+
+    .footer__about {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      line-height: 1.625;
+      opacity: 0.7;
+    }
+
+    .footer__socials {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .footer__social-btn {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s ease;
+    }
+
+    .footer__social-btn:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .footer__col-title {
+      font-weight: 800;
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+    }
+
+    .footer__link {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.15s ease;
+    }
+
+    .footer__link:hover {
+      color: var(--white);
+    }
+
+    .footer__link .icon {
+      opacity: 0.4;
+    }
+
+    .footer__contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      line-height: 1.625;
+    }
+
+    .footer__contact-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .footer__contact-row .icon {
+      color: var(--gold);
+    }
+
+    .footer__contact-pin {
+      margin-top: 0.125rem;
+    }
+
+    .footer__hours-box {
+      border-radius: 1rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+    }
+
+    .footer__hours-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer__hours-desc {
+      font-size: 0.6875rem;
+      opacity: 0.6;
+      margin-top: 0.25rem;
+    }
+
+    .footer__hours-btn {
+      margin-top: 0.75rem;
+      width: 100%;
+      height: 2.25rem;
+      border-radius: 9999px;
+      background-color: var(--gold);
+      color: var(--forest-deep);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer__bottom-inner {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.6875rem;
+      opacity: 0.6;
+    }
+
+    .footer__legal {
+      display: flex;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer__main {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .footer__bottom-inner {
+        height: 3rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    /* ==========================================================================
+       13. TOAST DE FEEDBACK
+       ========================================================================== */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+      background-color: var(--forest-deep);
+      color: var(--white);
+      border: 1px solid var(--gold);
+      border-radius: 9999px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      max-width: calc(100vw - 3rem);
+    }
+  </style>
+</head>
+
+<body id="page-shell" class="page-shell">
+  <svg aria-hidden="true" style="display: none;">
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </symbol>
+    <symbol id="icon-megaphone" viewBox="0 0 24 24">
+      <path d="m3 11 18-5v12L3 14v-3z" />
+      <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24">
+      <path d="M7 7h10v10" />
+      <path d="M7 17 17 7" />
+    </symbol>
+    <symbol id="icon-anchor" viewBox="0 0 24 24">
+      <path d="M12 22V8" />
+      <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+      <circle cx="12" cy="5" r="3" />
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </symbol>
+    <symbol id="icon-graduation-cap" viewBox="0 0 24 24">
+      <path
+        d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+      <path d="M22 10v6" />
+      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+    </symbol>
+    <symbol id="icon-building-2" viewBox="0 0 24 24">
+      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+      <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+      <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+      <path d="M10 6h4" />
+      <path d="M10 10h4" />
+      <path d="M10 14h4" />
+      <path d="M10 18h4" />
+    </symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24">
+      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+      <circle cx="12" cy="10" r="3" />
+    </symbol>
+    <symbol id="icon-type" viewBox="0 0 24 24">
+      <polyline points="4 7 4 4 20 4 20 7" />
+      <line x1="9" x2="15" y1="20" y2="20" />
+      <line x1="12" x2="12" y1="4" y2="20" />
+    </symbol>
+    <symbol id="icon-file-text" viewBox="0 0 24 24">
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      <path d="M10 9H8" />
+      <path d="M16 13H8" />
+      <path d="M16 17H8" />
+    </symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24">
+      <path
+        d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+      <path d="m10 15 5-3-5-3z" />
+    </symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+      <line x1="4" x2="20" y1="12" y2="12" />
+      <line x1="4" x2="20" y1="6" y2="6" />
+      <line x1="4" x2="20" y1="18" y2="18" />
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </symbol>
+    <symbol id="icon-landmark" viewBox="0 0 24 24">
+      <line x1="3" x2="21" y1="22" y2="22" />
+      <line x1="6" x2="6" y1="18" y2="11" />
+      <line x1="10" x2="10" y1="18" y2="11" />
+      <line x1="14" x2="14" y1="18" y2="11" />
+      <line x1="18" x2="18" y1="18" y2="11" />
+      <polygon points="12 2 20 7 4 7" />
+    </symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24">
+      <path d="M8 2v4" />
+      <path d="M16 2v4" />
+      <rect width="18" height="18" x="3" y="4" rx="2" />
+      <path d="M3 10h18" />
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <path
+        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+    </symbol>
+    <symbol id="icon-headphones" viewBox="0 0 24 24">
+      <path
+        d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+    </symbol>
+    <symbol id="icon-contrast" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 18a6 6 0 0 0 0-12v12z" />
+    </symbol>
+    <symbol id="icon-waves" viewBox="0 0 24 24">
+      <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+      <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+      <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+    </symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+      <path d="m9 18 6-6-6-6" />
+    </symbol>
+    <symbol id="icon-church" viewBox="0 0 24 24">
+      <path d="M10 9h4" />
+      <path d="M12 7v5" />
+      <path d="M14 22v-4a2 2 0 0 0-4 0v4" />
+      <path d="M18 22V5.618a1 1 0 0 0-.553-.894l-4.553-2.277a2 2 0 0 0-1.788 0L6.553 4.724A1 1 0 0 0 6 5.618V22" />
+      <path d="m18 7 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.618a1 1 0 0 1 .553-.894L6 7" />
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path
+        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4" />
+      <path d="M12 8h.01" />
+    </symbol>
+    <symbol id="icon-external-link" viewBox="0 0 24 24">
+      <path d="M15 3h6v6" />
+      <path d="M10 14 21 3" />
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </symbol>
+    <symbol id="icon-syringe" viewBox="0 0 24 24">
+      <path d="m18 2 4 4" />
+      <path d="m17 7 3-3" />
+      <path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5" />
+      <path d="m9 11 4 4" />
+      <path d="m5 19-3 3" />
+      <path d="m14 4 6 6" />
+    </symbol>
+  </svg>
+
+  <!-- ======================================================================
+       BARRA SUPERIOR INSTITUCIONAL & ACESSIBILIDADE
+       ====================================================================== -->
+  <aside class="topbar" aria-label="Informações institucionais e acessibilidade">
+    <div class="container topbar__inner">
+      <address class="topbar__info">
+        <span class="topbar__item">
+          <svg class="icon topbar__icon" width="12" height="12" aria-hidden="true">
+            <use href="#icon-map-pin" />
+          </svg>
+          Av. 7 de Setembro, 34 - Centro, Borba-AM
+        </span>
+        <span class="topbar__sep" aria-hidden="true">|</span>
+        <span class="topbar__item">
+          <svg class="icon topbar__icon" width="12" height="12" aria-hidden="true">
+            <use href="#icon-phone" />
+          </svg>
+          (92) 3512-2800
+        </span>
+        <span class="topbar__sep" aria-hidden="true">|</span>
+        <span class="topbar__item">
+          <svg class="icon topbar__icon" width="12" height="12" aria-hidden="true">
+            <use href="#icon-clock" />
+          </svg>
+          Seg-Sex 07h-13h
+        </span>
+      </address>
+
+      <div class="topbar__right">
+        <span class="topbar__a11y" role="group" aria-label="Controles de acessibilidade">
+          <button type="button" class="topbar__btn" data-action="font-inc" aria-label="Aumentar tamanho da fonte">
+            <svg class="icon" width="12" height="12" aria-hidden="true">
+              <use href="#icon-type" />
+            </svg>
+            A+
+          </button>
+          <button type="button" class="topbar__btn" data-action="font-dec" aria-label="Diminuir tamanho da fonte">
+            A-
+          </button>
+          <button type="button" class="topbar__btn topbar__btn--contrast" data-action="contrast-toggle"
+            aria-pressed="false">
+            <svg class="icon" width="12" height="12" aria-hidden="true">
+              <use href="#icon-contrast" />
+            </svg>
+            Contraste
+          </button>
+        </span>
+
+        <nav class="topbar__links" aria-label="Acesso institucional">
+          <span class="topbar__divider" aria-hidden="true"></span>
+          <a href="#contato" class="topbar__link">
+            <svg class="icon" width="12" height="12" aria-hidden="true">
+              <use href="#icon-headphones" />
+            </svg>
+            Ouvidoria
+          </a>
+          <a href="#inicio" class="topbar__link">Libras</a>
+          <a href="#transparencia" class="topbar__link topbar__link--gold">
+            Transparência
+          </a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       CABEÇALHO PRINCIPAL
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header__bar">
+      <button type="button" class="brand" data-scroll-to="inicio" aria-label="Ir para o início">
+        <img
+          src="assets/img/brasao-borba.png"
+          alt="Brasão do Município de Borba"
+          class="brand__emblem"
+        >
+        <span class="brand__text">
+          <span class="brand__title">PREFEITURA DE BORBA</span>
+          <span class="brand__subtitle">
+            Governo Municipal • Coração do Madeira
+          </span>
+        </span>
+      </button>
+
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <button type="button" class="desktop-nav__btn is-active" data-scroll-to="inicio">
+          Início
+        </button>
+        <button type="button" class="desktop-nav__btn" data-scroll-to="cidade">
+          A Cidade
+        </button>
+        <button type="button" class="desktop-nav__btn" data-scroll-to="governo">
+          Governo
+        </button>
+        <button type="button" class="desktop-nav__btn" data-scroll-to="secretarias">
+          Secretarias
+        </button>
+        <button type="button" class="desktop-nav__btn" data-scroll-to="servicos">
+          Serviços
+        </button>
+        <button type="button" class="desktop-nav__btn" data-scroll-to="noticias">
+          Notícias
+        </button>
+        <button type="button" class="desktop-nav__btn" data-scroll-to="turismo">
+          Turismo
+        </button>
+        <button type="button" class="desktop-nav__btn desktop-nav__btn--muted" data-scroll-to="transparencia">
+          Transparência
+        </button>
+      </nav>
+
+      <div class="header__actions">
+        <button type="button" id="search-toggle" class="icon-btn icon-btn--search" aria-label="Abrir busca"
+          aria-expanded="false" aria-controls="search-drawer">
+          <svg class="icon" width="18" height="18" aria-hidden="true">
+            <use href="#icon-search" />
+          </svg>
+        </button>
+
+        <a href="#" class="portal-btn">
+          Portal do Cidadão
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-arrow-up-right" />
+          </svg>
+        </a>
+
+        <button type="button" id="mobile-menu-toggle" class="icon-btn icon-btn--menu" aria-label="Abrir menu"
+          aria-expanded="false" aria-controls="mobile-menu">
+          <svg id="mobile-menu-icon-open" class="icon" width="20" height="20" aria-hidden="true">
+            <use href="#icon-menu" />
+          </svg>
+          <svg id="mobile-menu-icon-close" class="icon" width="20" height="20" aria-hidden="true" hidden>
+            <use href="#icon-x" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Barra de busca expansível -->
+    <form id="search-drawer" class="search-drawer" role="search" onsubmit="return false;" hidden>
+      <div class="container search-drawer__inner">
+        <label class="search-drawer__field">
+          <svg class="icon" width="18" height="18" aria-hidden="true">
+            <use href="#icon-search" />
+          </svg>
+          <input id="search-input" type="search" placeholder="Buscar serviços, notícias, secretarias..."
+            class="search-drawer__input" aria-label="Buscar no portal">
+        </label>
+        <button type="button" id="search-submit" class="search-drawer__submit">
+          Buscar
+        </button>
+      </div>
+    </form>
+
+    <!-- Menu mobile -->
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Menu móvel" hidden>
+      <div class="container mobile-menu__grid">
+        <button type="button" class="mobile-menu__link" data-scroll-to="inicio">
+          Início
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu__link" data-scroll-to="cidade">
+          A Cidade
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu__link" data-scroll-to="governo">
+          Governo
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu__link" data-scroll-to="secretarias">
+          Secretarias
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu__link" data-scroll-to="servicos">
+          Serviços
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu__link" data-scroll-to="noticias">
+          Notícias
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu__link" data-scroll-to="turismo">
+          Turismo
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu__link" data-scroll-to="transparencia">
+          Transparência
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu__link" data-scroll-to="contato">
+          Contato
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-chevron-right" />
+          </svg>
+        </button>
+        <a href="#" class="mobile-menu__cta">
+          Portal do Cidadão
+          <svg class="icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-arrow-up-right" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ======================================================================
+       CONTEÚDO PRINCIPAL
+       ====================================================================== -->
+  <main>
+    <!-- SEÇÃO HERO (#inicio) -->
+    <section id="inicio" class="hero">
+      <figure class="hero__bg" aria-hidden="true">
+        <img src="assets/img/por-do-sol-borba.jpg" alt="Pôr do sol em Borba às margens do Rio Madeira"
+          class="hero__bg-img">
+      </figure>
+
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="hero__badge">
+            <span class="hero__pulse" aria-hidden="true"></span>
+            PRIMEIRA VILA DO AMAZONAS • 1755-2026 • 270 ANOS
+          </p>
+
+          <h1 class="hero__title">
+            Borba, berço da história do Amazonas, às margens do
+            <span class="hero__title-accent">Rio Madeira</span>
+          </h1>
+
+          <p class="hero__lead">
+            Primeira vila da Capitania de São José do Rio Negro, com 44.251 km²,
+            42 mil borbenses e a maior festa religiosa do Amazonas.
+          </p>
+
+          <div class="hero__actions">
+            <button type="button" class="btn-gold" data-scroll-to="servicos">
+              Serviços ao Cidadão
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </button>
+            <button type="button" class="btn-glass" data-scroll-to="cidade">
+              Conheça a História
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-chevron-right" />
+              </svg>
+            </button>
+          </div>
+
+          <ul class="hero__stats">
+            <li class="hero-stat">
+              <strong class="hero-stat__value">1755</strong>
+              <span class="hero-stat__label">Fundação</span>
+            </li>
+            <li class="hero-stat">
+              <strong class="hero-stat__value">42.328</strong>
+              <span class="hero-stat__label">habitantes</span>
+            </li>
+            <li class="hero-stat">
+              <strong class="hero-stat__value">215km</strong>
+              <span class="hero-stat__label">de Manaus</span>
+            </li>
+            <li class="hero-stat">
+              <strong class="hero-stat__value">Imaterial</strong>
+              <span class="hero-stat__label">Patrimônio Cultural</span>
+            </li>
+          </ul>
+        </div>
+
+        <aside class="hero__aside">
+          <article class="festejo-card">
+            <figure class="festejo-card__media">
+              <img src="assets/img/basilica-santo-antonio.jpg" alt="Basílica de Santo Antônio de Borba"
+                class="festejo-card__img">
+              <span class="festejo-card__tag">
+                <svg class="icon icon--fill" width="12" height="12" aria-hidden="true">
+                  <use href="#icon-star" />
+                </svg>
+                PATRIMÔNIO IMATERIAL
+              </span>
+              <figcaption class="festejo-card__caption">
+                <p class="festejo-card__dates">01 A 13 DE JUNHO</p>
+                <h2 class="festejo-card__title">Festejo de Santo Antônio</h2>
+              </figcaption>
+            </figure>
+
+            <div class="festejo-card__body">
+              <div class="festejo-card__intro">
+                <span class="festejo-card__icon-wrap">
+                  <svg class="icon" width="18" height="18" aria-hidden="true">
+                    <use href="#icon-church" />
+                  </svg>
+                </span>
+                <div class="festejo-card__desc-col">
+                  <p class="festejo-card__desc">
+                    Maior festa religiosa do Amazonas, com manto de dinheiro,
+                    rio iluminado, procissão e 13 dias de devoção.
+                  </p>
+                  <p class="festejo-card__law">
+                    <span class="festejo-card__law-dot" aria-hidden="true"></span>
+                    LEI 5.975/2022 • RECONHECIDO PELO ESTADO
+                  </p>
+                </div>
+              </div>
+
+              <ul class="festejo-card__metrics">
+                <li class="festejo-metric">
+                  <strong class="festejo-metric__num">13 dias</strong>
+                  <span class="festejo-metric__sub">de programação</span>
+                </li>
+                <li class="festejo-metric">
+                  <strong class="festejo-metric__num">40 mil</strong>
+                  <span class="festejo-metric__sub">fiéis esperados</span>
+                </li>
+                <li class="festejo-metric festejo-metric--highlight">
+                  <strong class="festejo-metric__num">Rio + fé</strong>
+                  <span class="festejo-metric__sub">tradição viva</span>
+                </li>
+              </ul>
+
+              <button type="button" class="festejo-card__cta" data-scroll-to="turismo">
+                Ver programação completa
+                <svg class="icon" width="16" height="16" aria-hidden="true">
+                  <use href="#icon-arrow-up-right" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <p class="festejo-followers">
+            <span class="avatar-stack" aria-hidden="true">
+              <span class="avatar-stack__dot avatar-stack__dot--gold"></span>
+              <span class="avatar-stack__dot avatar-stack__dot--white"></span>
+              <span class="avatar-stack__dot avatar-stack__dot--green"></span>
+            </span>
+            <span>+2.3k borbenses acompanhando</span>
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS EM 1 CLIQUE (#servicos) -->
+    <section id="servicos" class="services-section">
+      <div class="container services-section__inner">
+        <header class="section-header-split">
+          <div>
+            <p class="pill-tag">SERVIÇOS EM 1 CLIQUE</p>
+            <h2 class="section-title">O que você precisa?</h2>
+            <p class="section-subtitle">
+              Acesse os serviços mais buscados sem fila, direto no Portal do
+              Cidadão de Borba.
+            </p>
+          </div>
+          <p class="services-note">
+            <svg class="icon" width="14" height="14" aria-hidden="true">
+              <use href="#icon-info" />
+            </svg>
+            Todos os serviços funcionam em celular e computador
+          </p>
+        </header>
+
+        <div class="services-grid">
+          <button type="button" class="service-card">
+            <span class="service-card__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-building-2" />
+              </svg>
+            </span>
+            <strong class="service-card__title">IPTU 2026</strong>
+            <span class="service-card__desc">2ª via e certidões</span>
+            <span class="service-card__arrow">
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </span>
+          </button>
+
+          <button type="button" class="service-card">
+            <span class="service-card__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-file-text" />
+              </svg>
+            </span>
+            <strong class="service-card__title">Nota Fiscal</strong>
+            <span class="service-card__desc">NFS-e eletrônica</span>
+            <span class="service-card__arrow">
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </span>
+          </button>
+
+          <button type="button" class="service-card">
+            <span class="service-card__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-landmark" />
+              </svg>
+            </span>
+            <strong class="service-card__title">Transparência</strong>
+            <span class="service-card__desc">Receitas e despesas</span>
+            <span class="service-card__arrow">
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </span>
+          </button>
+
+          <button type="button" class="service-card">
+            <span class="service-card__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-file-text" />
+              </svg>
+            </span>
+            <strong class="service-card__title">Licitações</strong>
+            <span class="service-card__desc">Editais abertos</span>
+            <span class="service-card__arrow">
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </span>
+          </button>
+
+          <button type="button" class="service-card">
+            <span class="service-card__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-users" />
+              </svg>
+            </span>
+            <strong class="service-card__title">Concurso Público</strong>
+            <span class="service-card__desc">Inscrições e editais</span>
+            <span class="service-card__arrow">
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </span>
+          </button>
+
+          <button type="button" class="service-card">
+            <span class="service-card__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-megaphone" />
+              </svg>
+            </span>
+            <strong class="service-card__title">Ouvidoria e-SIC</strong>
+            <span class="service-card__desc">Fale com a prefeitura</span>
+            <span class="service-card__arrow">
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </span>
+          </button>
+
+          <button type="button" class="service-card">
+            <span class="service-card__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-syringe" />
+              </svg>
+            </span>
+            <strong class="service-card__title">Vacinação</strong>
+            <span class="service-card__desc">Calendário e postos</span>
+            <span class="service-card__arrow">
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </span>
+          </button>
+
+          <button type="button" class="service-card">
+            <span class="service-card__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-graduation-cap" />
+              </svg>
+            </span>
+            <strong class="service-card__title">Matrícula Escolar</strong>
+            <span class="service-card__desc">Rede municipal</span>
+            <span class="service-card__arrow">
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTÍCIAS DE BORBA (#noticias) -->
+    <section id="noticias" class="news-section">
+      <div class="container section-pad">
+        <header class="news-header">
+          <div>
+            <h2 class="news-header__title">Notícias de Borba</h2>
+            <p class="news-header__sub">
+              Informação oficial, direta do Madeira para você.
+            </p>
+          </div>
+          <button type="button" class="btn-outline-pill">
+            Ver todas as notícias
+            <svg class="icon" width="16" height="16" aria-hidden="true">
+              <use href="#icon-external-link" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="news-layout">
+          <!-- Matéria em destaque -->
+          <article class="news-featured">
+            <figure class="news-featured__media">
+              <img src="assets/img/ubs-fluvial-borba.jpg" alt="UBS Fluvial para comunidades do Rio Madeira"
+                class="news-featured__img">
+              <figcaption class="news-featured__badges">
+                <span class="badge-forest">SAÚDE</span>
+                <time datetime="2026-07-22" class="badge-blur">22/07/2026</time>
+              </figcaption>
+            </figure>
+            <div class="news-featured__body">
+              <h3 class="news-featured__title">
+                Prefeitura entrega UBS Fluvial Reformada para comunidades do Rio Madeira
+              </h3>
+              <p class="news-featured__excerpt">
+                Embarcação equipada vai levar atendimento médico, odontológico e
+                vacinas para mais de 30 comunidades ribeirinhas.
+              </p>
+              <button type="button" class="news-featured__btn" data-toast="Matéria completa no Diário Oficial">
+                Ler matéria completa
+                <svg class="icon" width="14" height="14" aria-hidden="true">
+                  <use href="#icon-chevron-right" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Grade de notícias secundárias -->
+          <div class="news-cards">
+            <article class="news-mini">
+              <figure class="news-mini__media">
+                <img src="assets/img/noticia-obras.jpg" alt="Mais uma obra avançando no Distrito de Axinim"
+                  class="news-mini__img">
+              </figure>
+              <span class="news-mini__tag">Obras</span>
+              <div class="news-mini__meta">
+                <time datetime="2026-07-21" class="news-mini__date">
+                  21/07/2026
+                </time>
+                <h3 class="news-mini__title">
+                  Mais uma obra avançando no Distrito de Axinim
+                </h3>
+              </div>
+            </article>
+
+            <article class="news-mini">
+              <figure class="news-mini__media">
+                <img src="assets/img/noticia-educacao.jpg" alt="Programa Amazonas + Alfabetizado"
+                  class="news-mini__img">
+              </figure>
+              <span class="news-mini__tag">Educação</span>
+              <div class="news-mini__meta">
+                <time datetime="2026-07-20" class="news-mini__date">
+                  20/07/2026
+                </time>
+                <h3 class="news-mini__title">
+                  Programa Amazonas + Alfabetizado, um novo capítulo para a alfabetização em Borba
+                </h3>
+              </div>
+            </article>
+
+            <article class="news-mini">
+              <figure class="news-mini__media">
+                <img src="assets/img/noticia-cultura.jpg" alt="Reforma do Centro Cultural Ely Senna - PANTANAL"
+                  class="news-mini__img">
+              </figure>
+              <span class="news-mini__tag">Cultura</span>
+              <div class="news-mini__meta">
+                <time datetime="2026-07-19" class="news-mini__date">
+                  19/07/2026
+                </time>
+                <h3 class="news-mini__title">
+                  Reforma do Centro Cultural Ely Senna - PANTANAL
+                </h3>
+              </div>
+            </article>
+
+            <article class="news-mini">
+              <figure class="news-mini__media">
+                <img src="assets/img/noticia-meio-ambiente.jpg"
+                  alt=" SEMPRA realiza a distribuição de 10 mil mudas de açaí e guaraná" class="news-mini__img">
+              </figure>
+              <span class="news-mini__tag">Meio Ambiente</span>
+              <div class="news-mini__meta">
+                <time datetime="2026-07-18" class="news-mini__date">
+                  18/07/2026
+                </time>
+                <h3 class="news-mini__title">
+                  SEMPRA realiza a distribuição de 10 mil mudas de açaí e guaraná
+                </h3>
+              </div>
+            </article>
+          </div>
+
+          <!-- Coluna lateral: Avisos, Calendário, Redes, Última notícia -->
+          <aside class="news-sidebar">
+            <section class="notice-box">
+              <h3 class="notice-box__head">
+                <svg class="icon" width="14" height="14" aria-hidden="true">
+                  <use href="#icon-sun" />
+                </svg>
+                AVISOS IMPORTANTES
+              </h3>
+              <ul class="notice-box__list">
+                <li class="notice-item">
+                  <strong>Coleta de lixo:</strong>
+                  cronograma normal no feriado. Confira bairros.
+                </li>
+                <li class="notice-item">
+                  <strong>Matrícula 2026:</strong>
+                  prazo até 30/07 nas escolas polo.
+                </li>
+              </ul>
+            </section>
+
+            <section class="sidebar-card">
+              <h3 class="sidebar-card__head">
+                <svg class="icon" width="14" height="14" aria-hidden="true">
+                  <use href="#icon-calendar" />
+                </svg>
+                CALENDÁRIO
+              </h3>
+              <ul class="calendar-list">
+                <li class="calendar-row">
+                  <time datetime="2026-07-28" class="calendar-row__date">
+                    28 JUL
+                  </time>
+                  <span>Reunião do Conselho de Saúde - 09h</span>
+                </li>
+                <li class="calendar-row">
+                  <time datetime="2026-08-02" class="calendar-row__date">
+                    02 AGO
+                  </time>
+                  <span>Mutirão de documentação ribeirinha</span>
+                </li>
+              </ul>
+            </section>
+
+            <section class="social-box">
+              <p class="social-box__eyebrow">REDES OFICIAIS</p>
+              <h3 class="social-box__title">
+                Acompanhe o dia a dia da prefeitura
+              </h3>
+              <a href="#" class="social-box__pill">
+                <svg class="icon" width="16" height="16" aria-hidden="true">
+                  <use href="#icon-instagram" />
+                </svg>
+                @prefeituramunicipaldeborba
+              </a>
+              <p class="social-box__caption">
+                Informações oficiais, lives, prestação de contas e bastidores
+                das obras.
+              </p>
+            </section>
+
+            <section class="sidebar-card">
+              <h3 class="sidebar-card__head">ÚLTIMA NOTÍCIA</h3>
+              <p class="latest-news__title">
+                Carteira de vacinação: mutirão no interior neste sábado
+              </p>
+              <p class="latest-news__meta">
+                <time datetime="2026-07-17">17/07/2026</time> • Saúde
+              </p>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- A CIDADE E HISTÓRIA (#cidade) -->
+    <section id="cidade" class="city-section">
+      <div class="container city-section__grid">
+        <div>
+          <p class="city-badge">
+            <svg class="icon" width="12" height="12" aria-hidden="true">
+              <use href="#icon-anchor" />
+            </svg>
+            1728 • ALDEIA DE TROCANO
+          </p>
+
+          <h2 class="city-title">
+            Borba: de Aldeia de Trocano à primeira vila
+          </h2>
+
+          <div class="city-prose">
+            <p>
+              Fundada em <strong>1728</strong> como Missão de Trocano por
+              jesuítas e carmelitas, às margens do Rio Madeira. Em 1756 foi
+              elevada à condição de vila por
+              <strong>Francisco Xavier de Mendonça Furtado</strong> como
+              <strong>Borba Nova</strong>, em homenagem à cidade de Borba no
+              Alentejo, Portugal — tornando-se a
+              <strong>
+                primeira vila da Capitania de São José do Rio Negro
+              </strong>.
+            </p>
+            <p>
+              Rebaixada a freguesia em 1833, teve emancipação definitiva em
+              <strong>26/09/1888</strong> pela Lei Provincial nº 781,
+              desmembrada de Manaus, confirmada como município em 1892. Durante
+              o ciclo da borracha, foi entreposto comercial estratégico.
+            </p>
+            <p>
+              Localizada na <strong>5ª Sub-região do Madeira</strong>,
+              mesorregião Sul Amazonense, faz fronteira com Maués, Novo
+              Aripuanã, Apuí, Manicoré, Beruri, Autazes, Nova Olinda do Norte,
+              Careiro e Mato Grosso. São <strong>44.251 km²</strong> de
+              floresta, rios e comunidades.
+            </p>
+          </div>
+
+          <ul class="city-tags">
+            <li class="city-tag-gold">
+              Primeira Vila do Amazonas
+              <svg class="icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-star" />
+              </svg>
+            </li>
+            <li class="city-tag-ghost">Lei 781/1888</li>
+          </ul>
+        </div>
+
+        <ul class="city-facts">
+          <li class="city-fact-card">
+            <span class="city-fact-card__label">ÁREA TERRITORIAL</span>
+            <strong class="city-fact-card__value">44.251 km²</strong>
+            <span class="city-fact-card__sub">15º maior do AM</span>
+          </li>
+          <li class="city-fact-card">
+            <span class="city-fact-card__label">POPULAÇÃO</span>
+            <strong class="city-fact-card__value">42.328</strong>
+            <span class="city-fact-card__sub">IBGE 2022 • 15º AM</span>
+          </li>
+          <li class="city-fact-card">
+            <span class="city-fact-card__label">DENSIDADE</span>
+            <strong class="city-fact-card__value">1 hab/km²</strong>
+            <span class="city-fact-card__sub">Floresta e rios</span>
+          </li>
+          <li class="city-fact-card">
+            <span class="city-fact-card__label">CLIMA</span>
+            <strong class="city-fact-card__value">Equatorial</strong>
+            <span class="city-fact-card__sub">Af • 26°C média</span>
+          </li>
+          <li class="city-fact-card">
+            <span class="city-fact-card__label">IDH</span>
+            <strong class="city-fact-card__value">0,560</strong>
+            <span class="city-fact-card__sub">Médio • PNUD</span>
+          </li>
+          <li class="city-fact-card">
+            <span class="city-fact-card__label">GENTÍLICO</span>
+            <strong class="city-fact-card__value">Borbense</strong>
+            <span class="city-fact-card__sub">Quem nasce em Borba</span>
+          </li>
+          <li class="city-fact-card">
+            <span class="city-fact-card__label">DISTÂNCIA</span>
+            <strong class="city-fact-card__value">215 km</strong>
+            <span class="city-fact-card__sub">de Manaus • fluvial</span>
+          </li>
+          <li class="city-fact-card">
+            <span class="city-fact-card__label">REGIÃO</span>
+            <strong class="city-fact-card__value">Madeira</strong>
+            <span class="city-fact-card__sub">5ª Sub-região</span>
+          </li>
+
+          <li class="city-river-banner">
+            <span class="city-river-banner__icon">
+              <svg class="icon" width="18" height="18" aria-hidden="true">
+                <use href="#icon-waves" />
+              </svg>
+            </span>
+            <p class="city-river-banner__text">
+              <strong>Rio Madeira</strong> — o maior afluente da margem direita
+              do Amazonas, sustento e estrada dos borbenses.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TURISMO & CULTURA (#turismo) -->
+    <section id="turismo" class="tourism-section">
+      <div class="container section-pad">
+        <header class="tourism-header">
+          <div>
+            <p class="pill-tag">TURISMO &amp; CULTURA</p>
+            <h2 class="tourism-header__title">Viva Borba: fé, rio e história</h2>
+          </div>
+          <p class="tourism-header__sub">
+            Três experiências que fazem de Borba um destino único no coração do
+            Amazonas.
+          </p>
+        </header>
+
+        <div class="tourism-grid">
+          <article class="tourism-card">
+            <figure class="tourism-card__media">
+              <img src="assets/img/turismo-patrimonio.jpg" alt="Festejo de Santo Antônio" class="tourism-card__img">
+              <figcaption class="tourism-card__tag">
+                <svg class="icon" width="12" height="12" aria-hidden="true">
+                  <use href="#icon-church" />
+                </svg>
+                Patrimônio Imaterial
+              </figcaption>
+            </figure>
+            <div class="tourism-card__body">
+              <h3 class="tourism-card__title">Festejo de Santo Antônio</h3>
+              <p class="tourism-card__desc">
+                Maior festa religiosa do Amazonas. 13 dias em junho com manto de
+                dinheiro, rio iluminado com balsas, procissão fluvial e
+                terrestre, quadrilhas e devoção que reúne 40 mil fiéis.
+                Reconhecido pela Lei 5.975/2022.
+              </p>
+              <p class="tourism-card__meta">
+                <svg class="icon" width="12" height="12" aria-hidden="true">
+                  <use href="#icon-map-pin" />
+                </svg>
+                01 a 13 de junho • Centro e orla
+              </p>
+            </div>
+          </article>
+
+          <article class="tourism-card">
+            <figure class="tourism-card__media">
+              <img src="assets/img/turismo-ecoturismo.jpg" alt="Rio Madeira e suas praias" class="tourism-card__img">
+              <figcaption class="tourism-card__tag">
+                <svg class="icon" width="12" height="12" aria-hidden="true">
+                  <use href="#icon-waves" />
+                </svg>
+                Ecoturismo
+              </figcaption>
+            </figure>
+            <div class="tourism-card__body">
+              <h3 class="tourism-card__title">Rio Madeira e suas praias</h3>
+              <p class="tourism-card__desc">
+                Praias de rio de água doce na seca, pesca esportiva de
+                tucunaré, passeio a comunidades ribeirinhas, manejo de
+                pirarucu e pôr do sol inesquecível. Porta de entrada para o
+                interior profundo.
+              </p>
+              <p class="tourism-card__meta">
+                <svg class="icon" width="12" height="12" aria-hidden="true">
+                  <use href="#icon-map-pin" />
+                </svg>
+                Seca: ago a nov • Embarque na orla
+              </p>
+            </div>
+          </article>
+
+          <article class="tourism-card">
+            <figure class="tourism-card__media">
+              <img src="assets/img/turismo-historia-viva.jpg" alt="Centro Histórico" class="tourism-card__img">
+              <figcaption class="tourism-card__tag">
+                <svg class="icon" width="12" height="12" aria-hidden="true">
+                  <use href="#icon-landmark" />
+                </svg>
+                História viva
+              </figcaption>
+            </figure>
+            <div class="tourism-card__body">
+              <h3 class="tourism-card__title">Centro Histórico</h3>
+              <p class="tourism-card__desc">
+                Igreja Matriz de Santo Antônio de Borba, casarões do ciclo da
+                borracha, praça central e museu municipal. Caminhada que conta
+                270 anos desde a Aldeia de Trocano.
+              </p>
+              <p class="tourism-card__meta">
+                <svg class="icon" width="12" height="12" aria-hidden="true">
+                  <use href="#icon-map-pin" />
+                </svg>
+                Visitação diária • Guia local
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOVERNO E SECRETARIAS (#governo / #secretarias) -->
+    <section id="governo" class="gov-section">
+      <div id="secretarias" class="container section-pad">
+        <header class="gov-header">
+          <div>
+            <h2 class="gov-header__title">Organização Municipal</h2>
+            <p class="gov-header__sub">
+              16 pastas que trabalham por Borba — dados do Portal da
+              Transparência.
+            </p>
+          </div>
+          <p class="gov-badge">
+            <svg class="icon" width="14" height="14" aria-hidden="true">
+              <use href="#icon-building-2" />
+            </svg>
+            Gestão 2025-2028
+          </p>
+        </header>
+
+        <ul class="secretariat-grid">
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMA</span>
+              <span class="secretariat-card__pill">SEMAP</span>
+            </header>
+            <h3 class="secretariat-card__name">Administração e Planejamento</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">Cleuder Moda de Souza</span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMS</span>
+              <span class="secretariat-card__pill">SEMSA</span>
+            </header>
+            <h3 class="secretariat-card__name">Saúde</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Cintia Roque da Silva Felipe
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEME</span>
+              <span class="secretariat-card__pill">SEMED</span>
+            </header>
+            <h3 class="secretariat-card__name">Educação</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Paulo Antonio de Paula da Cruz
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMA</span>
+              <span class="secretariat-card__pill">SEMASDH</span>
+            </header>
+            <h3 class="secretariat-card__name">
+              Assistência Social e Direitos Humanos
+            </h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Nixon Ricardo C. da Fonseca
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEME</span>
+              <span class="secretariat-card__pill">SEMEJ</span>
+            </header>
+            <h3 class="secretariat-card__name">Esporte e Juventude</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Fabio Junior N. dos Santos
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMM</span>
+              <span class="secretariat-card__pill">SEMMA</span>
+            </header>
+            <h3 class="secretariat-card__name">Meio Ambiente</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Marcio Alessandro G. de Souza
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMP</span>
+              <span class="secretariat-card__pill">SEMPRA</span>
+            </header>
+            <h3 class="secretariat-card__name">
+              Produção Rural e Abastecimento
+            </h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">Geraldo Max Linhares</span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SMSP</span>
+              <span class="secretariat-card__pill">SMSP</span>
+            </header>
+            <h3 class="secretariat-card__name">Serviços Públicos</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Antonio César Tavares Gonçalves
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SMPP</span>
+              <span class="secretariat-card__pill">SMPPM</span>
+            </header>
+            <h3 class="secretariat-card__name">
+              Políticas Públicas para Mulheres
+            </h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Maria Arlete S. de Freitas
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SELI</span>
+              <span class="secretariat-card__pill">SELIMP</span>
+            </header>
+            <h3 class="secretariat-card__name">Limpeza Pública</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Edileno de Lima Pinheiro
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMF</span>
+              <span class="secretariat-card__pill">SEMFFA</span>
+            </header>
+            <h3 class="secretariat-card__name">Finanças e Arrecadação</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Marciele Pinheiro Jeffryes
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMI</span>
+              <span class="secretariat-card__pill">SEMII</span>
+            </header>
+            <h3 class="secretariat-card__name">Interior</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">Margarete Farias Nob</span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMO</span>
+              <span class="secretariat-card__pill">SEMOTU</span>
+            </header>
+            <h3 class="secretariat-card__name">Obras, Transporte e Urbanismo</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">Aldeci Machado de Mel</span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMC</span>
+              <span class="secretariat-card__pill">SEMCULT</span>
+            </header>
+            <h3 class="secretariat-card__name">Cultura e Turismo</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">Claudio Correa Alfon</span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEGO</span>
+              <span class="secretariat-card__pill">SEGOV</span>
+            </header>
+            <h3 class="secretariat-card__name">Governo</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Bento dos Santos Santana
+              </span>
+            </p>
+          </li>
+
+          <li class="secretariat-card">
+            <header class="secretariat-card__top">
+              <span class="secretariat-card__avatar">SEMP</span>
+              <span class="secretariat-card__pill">SEMPDEC</span>
+            </header>
+            <h3 class="secretariat-card__name">Defesa Civil</h3>
+            <p class="secretariat-card__sec">
+              <span class="secretariat-card__label">Secretário(a):</span><br>
+              <span class="secretariat-card__person">
+                Marimar Machado Marques
+              </span>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAIXA TRANSPARÊNCIA (#transparencia) -->
+    <section id="transparencia" class="lai-band">
+      <div class="container lai-band__inner">
+        <div class="lai-band__lead">
+          <span class="lai-band__icon">
+            <svg class="icon" width="22" height="22" aria-hidden="true">
+              <use href="#icon-landmark" />
+            </svg>
+          </span>
+          <div>
+            <p class="lai-band__eyebrow">LEI DE ACESSO À INFORMAÇÃO</p>
+            <h2 class="lai-band__title">Transparência é nossa obrigação</h2>
+            <p class="lai-band__sub">
+              Dados abertos, prestação de contas e controle social.
+            </p>
+          </div>
+        </div>
+
+        <nav class="lai-band__actions" aria-label="Portais de transparência">
+          <button type="button" class="lai-btn">
+            Portal Transparência
+            <svg class="icon" width="14" height="14" aria-hidden="true">
+              <use href="#icon-arrow-up-right" />
+            </svg>
+          </button>
+          <button type="button" class="lai-btn">
+            LAI e-SIC
+            <svg class="icon" width="14" height="14" aria-hidden="true">
+              <use href="#icon-arrow-up-right" />
+            </svg>
+          </button>
+          <button type="button" class="lai-btn">
+            Diário Oficial
+            <svg class="icon" width="14" height="14" aria-hidden="true">
+              <use href="#icon-arrow-up-right" />
+            </svg>
+          </button>
+          <button type="button" class="lai-btn">
+            Prestação de Contas
+            <svg class="icon" width="14" height="14" aria-hidden="true">
+              <use href="#icon-arrow-up-right" />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       RODAPÉ (#contato)
+       ====================================================================== -->
+  <footer id="contato" class="site-footer">
+    <div class="container footer__main">
+      <section>
+        <div class="footer__brand">
+          <img
+            src="assets/img/brasao-borba.png"
+            alt="Brasão do Município de Borba"
+            class="footer__brand-icon"
+          >
+          <div class="footer__brand-text">
+            <p class="footer__brand-title">PREFEITURA DE BORBA</p>
+            <p class="footer__brand-sub">CORAÇÃO DO MADEIRA • AM</p>
+          </div>
+        </div>
+        <p class="footer__about">
+          Prefeitura Municipal de Borba - AM<br>
+          CNPJ 04.477.634/0001-90<br>
+          Primeira vila do Amazonas, desde 1755.
+        </p>
+        <ul class="footer__socials">
+          <li>
+            <a href="#" class="footer__social-btn" aria-label="Instagram da Prefeitura de Borba">
+              <svg class="icon" width="16" height="16" aria-hidden="true">
+                <use href="#icon-instagram" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__social-btn" aria-label="Facebook da Prefeitura de Borba">
+              <svg class="icon" width="16" height="16" aria-hidden="true">
+                <use href="#icon-facebook" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__social-btn" aria-label="YouTube da Prefeitura de Borba">
+              <svg class="icon" width="16" height="16" aria-hidden="true">
+                <use href="#icon-youtube" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <nav aria-label="Acesso rápido">
+        <h3 class="footer__col-title">ACESSO RÁPIDO</h3>
+        <ul class="footer__links">
+          <li>
+            <a href="#inicio" class="footer__link">
+              Portal do Cidadão
+              <svg class="icon" width="12" height="12" aria-hidden="true">
+                <use href="#icon-chevron-right" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#servicos" class="footer__link">
+              IPTU 2026
+              <svg class="icon" width="12" height="12" aria-hidden="true">
+                <use href="#icon-chevron-right" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#servicos" class="footer__link">
+              Nota Fiscal
+              <svg class="icon" width="12" height="12" aria-hidden="true">
+                <use href="#icon-chevron-right" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#servicos" class="footer__link">
+              Licitações
+              <svg class="icon" width="12" height="12" aria-hidden="true">
+                <use href="#icon-chevron-right" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#servicos" class="footer__link">
+              Concursos
+              <svg class="icon" width="12" height="12" aria-hidden="true">
+                <use href="#icon-chevron-right" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#servicos" class="footer__link">
+              Ouvidoria
+              <svg class="icon" width="12" height="12" aria-hidden="true">
+                <use href="#icon-chevron-right" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <section>
+        <h3 class="footer__col-title">CONTATO</h3>
+        <address class="footer__contacts">
+          <p class="footer__contact-row">
+            <svg class="icon footer__contact-pin" width="14" height="14" aria-hidden="true">
+              <use href="#icon-map-pin" />
+            </svg>
+            <span>
+              Av. 7 de Setembro, 34 - Centro<br>Borba-AM • CEP 69200-000
+            </span>
+          </p>
+          <p class="footer__contact-row">
+            <svg class="icon" width="14" height="14" aria-hidden="true">
+              <use href="#icon-phone" />
+            </svg>
+            <span>(92) 3512-2800 / 98412-0000</span>
+          </p>
+          <p class="footer__contact-row">
+            <svg class="icon" width="14" height="14" aria-hidden="true">
+              <use href="#icon-mail" />
+            </svg>
+            <span>contato@borba.am.gov.br</span>
+          </p>
+        </address>
+      </section>
+
+      <section>
+        <h3 class="footer__col-title">ATENDIMENTO</h3>
+        <div class="footer__hours-box">
+          <p class="footer__hours-title">Seg a Sex • 07h às 13h</p>
+          <p class="footer__hours-desc">
+            Paço Municipal - Gabinete do Prefeito. Atendimento presencial e pelo
+            e-SIC.
+          </p>
+          <button type="button" class="footer__hours-btn">
+            Falar com a Ouvidoria
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>
+          © 2026 Prefeitura Municipal de Borba - AM • Desenvolvido com carinho
+          para o povo borbense.
+        </p>
+        <nav class="footer__legal" aria-label="Links institucionais">
+          <a href="#transparencia">Política de Privacidade</a>
+          <a href="#inicio">Mapa do Site</a>
+          <a href="#inicio">Acessibilidade</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notificação temporária -->
+  <output id="toast" class="toast" aria-live="polite" hidden></output>
+
+  <!-- ========================================================================
+       INTERAÇÕES JAVASCRIPT VANILLA
+       ======================================================================== -->
+  <script>
+    (() => {
+      'use strict';
+
+      const pageShell = document.getElementById('page-shell');
+      const toastEl = document.getElementById('toast');
+      const searchToggleBtn = document.getElementById('search-toggle');
+      const searchDrawer = document.getElementById('search-drawer');
+      const searchInput = document.getElementById('search-input');
+      const searchSubmitBtn = document.getElementById('search-submit');
+      const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileIconOpen = document.getElementById('mobile-menu-icon-open');
+      const mobileIconClose = document.getElementById('mobile-menu-icon-close');
+      const desktopNavBtns = document.querySelectorAll('.desktop-nav__btn');
+
+      let fontSizePct = 100;
+      let highContrast = false;
+      let toastTimer = null;
+
+      function showToast(message) {
+        if (!toastEl || !message) return;
+        toastEl.textContent = message;
+        toastEl.hidden = false;
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.hidden = true;
+        }, 2500);
+      }
+
+      function setMobileMenu(open) {
+        if (!mobileMenu || !mobileToggleBtn) return;
+        mobileMenu.hidden = !open;
+        mobileToggleBtn.setAttribute('aria-expanded', String(open));
+        mobileIconOpen.hidden = open;
+        mobileIconClose.hidden = !open;
+      }
+
+      function setSearchDrawer(open) {
+        if (!searchDrawer || !searchToggleBtn) return;
+        searchDrawer.hidden = !open;
+        searchToggleBtn.setAttribute('aria-expanded', String(open));
+        if (open && searchInput) {
+          searchInput.focus();
+        }
+      }
+
+      function updateFontSize(nextPct) {
+        fontSizePct = Math.max(85, Math.min(130, nextPct));
+        document.documentElement.style.fontSize = `${fontSizePct}%`;
+      }
+
+      function setActiveNav(targetId) {
+        desktopNavBtns.forEach((btn) => {
+          btn.classList.toggle('is-active', btn.dataset.scrollTo === targetId);
+        });
+      }
+
+      // Controles de acessibilidade (A+, A-, Contraste)
+      document.querySelector('[data-action="font-inc"]')?.addEventListener('click', () => {
+        updateFontSize(fontSizePct + 10);
+        showToast(`Fonte aumentada para ${fontSizePct}% • Acessibilidade ativada`);
+      });
+
+      document.querySelector('[data-action="font-dec"]')?.addEventListener('click', () => {
+        updateFontSize(fontSizePct - 10);
+        showToast(`Fonte reduzida para ${fontSizePct}% • Acessibilidade ativada`);
+      });
+
+      const contrastBtn = document.querySelector('[data-action="contrast-toggle"]');
+      contrastBtn?.addEventListener('click', () => {
+        highContrast = !highContrast;
+        pageShell?.classList.toggle('is-high-contrast', highContrast);
+        contrastBtn.setAttribute('aria-pressed', String(highContrast));
+        showToast(highContrast ? 'Alto contraste ativado' : 'Alto contraste desativado');
+      });
+
+      // Navegação suave para seções
+      document.querySelectorAll('[data-scroll-to]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const targetId = el.dataset.scrollTo;
+          setMobileMenu(false);
+          setActiveNav(targetId);
+          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // Alternância da barra de busca e menu mobile
+      searchToggleBtn?.addEventListener('click', () => {
+        setSearchDrawer(searchDrawer.hidden);
+      });
+
+      searchSubmitBtn?.addEventListener('click', () => {
+        setSearchDrawer(false);
+      });
+
+      mobileToggleBtn?.addEventListener('click', () => {
+        setMobileMenu(mobileMenu.hidden);
+      });
+
+      // Botões com toast informativo
+      document.querySelectorAll('[data-toast]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          showToast(btn.dataset.toast);
+        });
+      });
+
+      // Segurança para links externos
+      function secureExternalLink(link) {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        try {
+          const url = new URL(href, document.baseURI);
+          const isHttp = url.protocol === 'http:' || url.protocol === 'https:';
+          if (isHttp && url.host !== location.host) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+          }
+        } catch {
+          // Ignora URLs malformadas
+        }
+      }
+
+      document.querySelectorAll('a[href]').forEach(secureExternalLink);
+      document.addEventListener('click', (event) => {
+        const link = event.target?.closest?.('a[href]');
+        if (link) secureExternalLink(link);
+      }, true);
+    })();
+  </script>
+</body>
+
+</html>
